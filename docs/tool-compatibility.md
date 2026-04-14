@@ -1,18 +1,18 @@
 # Tool Compatibility
 
-このリポジトリは、1 つの canonical skill を Codex、Claude Code、GitHub Copilot に持ち運べるように構成している。
+このリポジトリは、1 つの共通 skill を Codex、Claude Code、GitHub Copilot の 3 つで使い回せるように構成しています。
 
 ## Codex
 
 正式な skill 本体:
 - `skills/<skill-name>/`
 
-推奨導線:
+推奨する導入方法:
 - `$skill-installer install <GitHub directory URL>`
 
-補助導線:
+補助的な導入方法:
 - `scripts/install_skill.sh codex <skill-name>`
-- `~/.codex/skills/<skill-name>/` へコピーされる
+- `~/.codex/skills/<skill-name>/` にコピーされる
 
 例:
 ```text
@@ -21,17 +21,17 @@ $skill-installer install https://github.com/senri1101/safe-shipping-skills/tree/
 
 ## Claude Code
 
-正式な project-level 入口:
+正式な project-level の入口:
 - `CLAUDE.md`
 - `.claude/commands/<skill-name>.md`
 
-推奨導線:
-- この repo をそのまま開く
-- Claude Code が project memory と project command を読む
+推奨する導入方法:
+- このリポジトリをそのまま開く
+- Claude Code が `CLAUDE.md` と project command を読む
 
-補助導線:
+補助的な導入方法:
 - `scripts/install_skill.sh claude <skill-name>`
-- `~/.claude/commands/<skill-name>.md` へコピーされる
+- `~/.claude/commands/<skill-name>.md` にコピーされる
 
 例:
 ```text
@@ -40,24 +40,24 @@ $skill-installer install https://github.com/senri1101/safe-shipping-skills/tree/
 
 ## GitHub Copilot
 
-正式な repo-level 入口:
+正式な repo-level の入口:
 - `.github/skills/<skill-name>/SKILL.md`
 
-補助 instruction:
+補助的な instructions:
 - `.github/copilot-instructions.md`
 - `.github/instructions/*.instructions.md`
 - `AGENTS.md`
 
-推奨導線:
-- この repo をそのまま開く
+推奨する導入方法:
+- このリポジトリをそのまま開く
 
-補助導線:
+補助的な導入方法:
 - `scripts/install_skill.sh copilot <skill-name>`
-- `~/.copilot/skills/<skill-name>/` へ canonical skill をコピーする
+- `~/.copilot/skills/<skill-name>/` に共通 skill をコピーする
 
-## 設計原則
+## 設計方針
 
-- reusable workflow は `skills/` の 1 箇所に集約する
-- ツールごとの差分は wrapper に閉じ込める
-- wrapper にロジックを複製しない
-- できるだけ stable なファイル名とディレクトリ名を使う
+- 再利用する workflow は `skills/` に集約する
+- ツールごとの差分は wrapper 側に閉じ込める
+- wrapper にロジックを重複させない
+- できるだけ安定したファイル名とディレクトリ名を使う
