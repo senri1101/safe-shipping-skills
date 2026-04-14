@@ -1,0 +1,7 @@
+interface:
+  display_name: "Project Readiness Check"
+  short_description: "プロジェクトの安全性・品質・運用準備を網羅点検する"
+  default_prompt: "Use $project-readiness-check to assess a project for security, delivery, and operational readiness before release."
+
+policy:
+  allow_implicit_invocation: true
