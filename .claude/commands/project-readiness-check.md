@@ -1,16 +1,15 @@
 ---
-description: Run the project-readiness-check workflow against the current repository or provided target.
+description: 現在のリポジトリや指定された対象に対して project-readiness-check を実行します。
 ---
 
-Use `.claude/skills/project-readiness-check/SKILL.md` as the Claude Code entrypoint.
-If you are using this repository directly, that skill will in turn refer to the canonical files under `skills/project-readiness-check/`.
+`.claude/skills/project-readiness-check/SKILL.md` を Claude Code の入口として使ってください。
 
-Task:
-- Run the `project-readiness-check` workflow.
-- Start by filling the project profile.
-- Inspect local evidence before making claims.
-- Evaluate hard gates first, then stage gates.
-- Use deep-dive questions only for uncertain or failing areas.
-- Return a Markdown report that follows `skills/project-readiness-check/references/report-template.md`.
+実行内容:
+- `project-readiness-check` のワークフローを実行する
+- 最初にプロジェクトプロファイルを埋める
+- 断定する前にローカルの証拠を確認する
+- まず Hard Gates、その後に Stage Gates を判定する
+- 深掘り質問は不確実な箇所や失敗している箇所にだけ使う
+- `references/report-template.md` に沿った Markdown レポートを返す
 
-Target or extra context: $ARGUMENTS
+対象や追加コンテキスト: $ARGUMENTS
