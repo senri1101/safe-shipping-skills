@@ -49,17 +49,20 @@ skills/<skill-name>/
 
 ### Codex
 - `skills/<skill-name>/` をそのまま配布する
+- README では GitHub directory URL を使う `$skill-installer` を第一候補にする
 
 ### Claude Code
+- `CLAUDE.md` を project memory として使う
 - 必要なら `.claude/commands/<skill-name>.md` を追加する
 - wrapper の中では canonical skill への参照だけを持たせる
 
 ### GitHub Copilot
+- `.github/skills/<skill-name>/SKILL.md` を repo-level skill として置く
 - `.github/copilot-instructions.md`
 - `.github/instructions/*.instructions.md`
 - `AGENTS.md`
 
-を使って repository-level guidance を与える
+を補助 guidance として使う
 
 ## 追加手順
 
@@ -68,8 +71,9 @@ skills/<skill-name>/
 3. `SKILL.md` の frontmatter と本文を埋める
 4. `agents/openai.yaml` を skill 内容に合わせて更新する
 5. `references/` を必要最低限の粒度で分割する
-6. 必要なら Claude / Copilot 向け wrapper を追加する
-7. README の `同梱 skill` を更新する
+6. 必要なら `.claude/commands/<skill-name>.md` を追加する
+7. 必要なら `.github/skills/<skill-name>/SKILL.md` を追加する
+8. README の `同梱 skill` を更新する
 
 ## レビュー観点
 

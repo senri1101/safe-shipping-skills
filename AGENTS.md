@@ -5,8 +5,9 @@ This repository contains reusable prompts and skill packages for multiple AI cod
 ## Source Of Truth
 
 - Treat `skills/` as the canonical content.
-- Do not fork logic across tool-specific files unless the target tool requires a different entrypoint format.
-- If guidance conflicts, prefer the files inside `skills/<skill-name>/` for workflow details.
+- Do not fork workflow logic across tool-specific files unless the target tool requires a different entrypoint format.
+- For GitHub Copilot, keep thin repo-level wrappers under `.github/skills/`.
+- For Claude Code, keep thin command wrappers under `.claude/commands/`.
 
 ## Editing Expectations
 
@@ -21,4 +22,4 @@ Changes in this repo should remain usable for:
 
 - Codex skill folders
 - Claude Code project memory and slash commands
-- GitHub Copilot repository and agent instructions
+- GitHub Copilot repository skills and instructions

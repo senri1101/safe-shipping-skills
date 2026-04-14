@@ -16,12 +16,18 @@ AI で書いたコードや設計を、安全に出荷するための review-fir
 - Claude Code
 - GitHub Copilot
 
-各ツール向けの入口は分けていますが、skill の canonical source は `skills/` です。
+canonical source は `skills/` です。ツールごとの正式な入口だけを薄い wrapper として追加しています。
 
-## 最短導入
+## 導入方法
 
 ### Codex
 
+推奨:
+```text
+$skill-installer install https://github.com/senri1101/safe-shipping-skills/tree/main/skills/project-readiness-check
+```
+
+補助方法:
 ```bash
 bash scripts/install_skill.sh codex project-readiness-check
 ```
@@ -36,6 +42,11 @@ Use $project-readiness-check to assess this repository before release.
 
 ### Claude Code
 
+推奨:
+- この repo をそのまま開く
+- `CLAUDE.md` と `.claude/commands/project-readiness-check.md` を使う
+
+補助方法:
 ```bash
 bash scripts/install_skill.sh claude project-readiness-check
 ```
@@ -50,21 +61,26 @@ bash scripts/install_skill.sh claude project-readiness-check
 
 ### GitHub Copilot
 
-GitHub Copilot はローカルインストールではなく、この repo 内の以下のファイルを使います。
+推奨:
+- この repo をそのまま開く
+- `.github/skills/project-readiness-check/SKILL.md` を repo-level agent skill として使う
+- `.github/copilot-instructions.md` と `.github/instructions/skills.instructions.md` を補助として使う
 
-- `.github/copilot-instructions.md`
-- `.github/instructions/skills.instructions.md`
-- `AGENTS.md`
+補助方法:
+```bash
+bash scripts/install_skill.sh copilot project-readiness-check
+```
 
-VS Code や GitHub 上でこの repo を開けば、repository instructions として利用できます。
+インストール先:
+- `~/.copilot/skills/project-readiness-check`
 
 ## 社内向け導入手順
 
 1. この repo を clone する
 2. 使いたい skill 名を決める
-3. `scripts/install_skill.sh` で Codex または Claude Code に入れる
-4. GitHub Copilot 利用者は、この repo か fork 済み repo をワークスペースとして開く
-5. 変更を加える場合は `skills/` を canonical source として更新する
+3. 利用ツールに応じて、推奨導線か `scripts/install_skill.sh` を使う
+4. 変更を加える場合は `skills/` を canonical source として更新する
+5. ツール固有の入口は wrapper 側だけ最小差分で追従する
 
 ## 同梱 skill
 
@@ -89,6 +105,11 @@ skills/
     SKILL.md
     agents/openai.yaml
     references/
+.github/skills/
+  project-readiness-check/
+    SKILL.md
+.claude/commands/
+  project-readiness-check.md
 ```
 
 ## リポジトリ構成
@@ -100,7 +121,8 @@ skills/
 ├── templates/
 ├── docs/
 ├── .claude/commands/
-├── .github/
+├── .github/skills/
+├── .github/instructions/
 ├── CLAUDE.md
 └── AGENTS.md
 ```

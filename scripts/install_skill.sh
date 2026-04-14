@@ -22,6 +22,7 @@ install_codex() {
   rm -rf "$target"
   cp -R "$skill_dir" "$target"
   echo "Installed Codex skill: $target"
+  echo "Official-first option: use \"$skill-installer install <GitHub directory URL>\" inside Codex when available."
 }
 
 install_claude() {
@@ -34,16 +35,16 @@ install_claude() {
   mkdir -p "$target_dir"
   cp "$source" "$target_dir/$skill_name.md"
   echo "Installed Claude Code command: $target_dir/$skill_name.md"
+  echo "Official-first option: open this repository directly so Claude Code can use project memory and project commands in place."
 }
 
-print_copilot() {
-  cat <<MSG
-GitHub Copilot does not install a local skill directory.
-Use this repository directly and rely on:
-- .github/copilot-instructions.md
-- .github/instructions/
-- AGENTS.md
-MSG
+install_copilot() {
+  local target="$HOME/.copilot/skills/$skill_name"
+  mkdir -p "$HOME/.copilot/skills"
+  rm -rf "$target"
+  cp -R "$skill_dir" "$target"
+  echo "Installed GitHub Copilot skill: $target"
+  echo "Official-first option: open this repository directly and use .github/skills plus repository instructions."
 }
 
 case "$tool" in
@@ -54,12 +55,12 @@ case "$tool" in
     install_claude
     ;;
   copilot)
-    print_copilot
+    install_copilot
     ;;
   all)
     install_codex
     install_claude
-    print_copilot
+    install_copilot
     ;;
   *)
     echo "Unknown tool: $tool" >&2

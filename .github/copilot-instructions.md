@@ -5,6 +5,7 @@ This repository stores reusable AI workflow assets.
 ## General Rules
 
 - Treat `skills/` as the canonical source of reusable review workflows.
+- Keep repo-level Copilot wrappers under `.github/skills/` thin and refer back to the canonical skill.
 - Preserve the folder layout of each skill so users can copy it directly into their own environments.
 - Keep `SKILL.md` concise and move detailed material into `references/`.
 - Avoid duplicating the same instruction across multiple files unless the target tool requires a wrapper.

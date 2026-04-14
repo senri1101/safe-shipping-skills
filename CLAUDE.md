@@ -6,7 +6,7 @@ This repository stores reusable AI workflow assets that should remain tool-agnos
 
 - `skills/` is the canonical source for reusable review workflows.
 - Each skill should stay portable across tools.
-- Tool-specific entrypoints should live outside the skill itself when possible.
+- Tool-specific entrypoints should live outside the canonical skill whenever possible.
 
 ## Editing Rules
 
@@ -25,13 +25,11 @@ skills/<skill-name>/
   references/
 ```
 
-Optional directories may be added when justified, but do not add extra files by default.
-
 ## Cross-tool Compatibility
 
-- Codex: keep the skill directory directly portable into `~/.codex/skills/`.
-- Claude Code: keep project-level guidance in this `CLAUDE.md` and reusable commands in `.claude/commands/`.
-- GitHub Copilot: keep repository-wide guidance in `.github/copilot-instructions.md` and agent-oriented guidance in `AGENTS.md`.
+- Codex: keep the canonical skill directly portable into `~/.codex/skills/`.
+- Claude Code: keep project-level guidance in `CLAUDE.md` and commands in `.claude/commands/`.
+- GitHub Copilot: keep repo-level skills in `.github/skills/` and repository instructions in `.github/copilot-instructions.md` and `.github/instructions/`.
 
 ## When Adding Or Updating A Skill
 

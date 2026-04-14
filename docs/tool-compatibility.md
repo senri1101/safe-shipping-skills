@@ -1,47 +1,63 @@
 # Tool Compatibility
 
-This repository is structured so one skill can be reused across Codex, Claude Code, and GitHub Copilot.
+このリポジトリは、1 つの canonical skill を Codex、Claude Code、GitHub Copilot に持ち運べるように構成している。
 
 ## Codex
 
-Canonical location:
+正式な skill 本体:
 - `skills/<skill-name>/`
 
-Typical installation:
-1. Copy `skills/<skill-name>/` into `~/.codex/skills/<skill-name>/`
-2. Invoke the skill explicitly in Codex
+推奨導線:
+- `$skill-installer install <GitHub directory URL>`
 
-Example:
+補助導線:
+- `scripts/install_skill.sh codex <skill-name>`
+- `~/.codex/skills/<skill-name>/` へコピーされる
+
+例:
 ```text
-Use $project-readiness-check to assess this repository before release.
+$skill-installer install https://github.com/senri1101/safe-shipping-skills/tree/main/skills/project-readiness-check
 ```
 
 ## Claude Code
 
-Repository support files:
+正式な project-level 入口:
 - `CLAUDE.md`
-- `.claude/commands/project-readiness-check.md`
+- `.claude/commands/<skill-name>.md`
 
-How to use:
-- Open the repository in Claude Code.
-- Claude reads `CLAUDE.md` as project memory.
-- Run `/project-readiness-check` to execute the workflow wrapper.
+推奨導線:
+- この repo をそのまま開く
+- Claude Code が project memory と project command を読む
+
+補助導線:
+- `scripts/install_skill.sh claude <skill-name>`
+- `~/.claude/commands/<skill-name>.md` へコピーされる
+
+例:
+```text
+/project-readiness-check
+```
 
 ## GitHub Copilot
 
-Repository support files:
+正式な repo-level 入口:
+- `.github/skills/<skill-name>/SKILL.md`
+
+補助 instruction:
 - `.github/copilot-instructions.md`
-- `.github/instructions/skills.instructions.md`
+- `.github/instructions/*.instructions.md`
 - `AGENTS.md`
-- `CLAUDE.md`
 
-How it applies:
-- Copilot Chat can use `.github/copilot-instructions.md` as repository-wide context.
-- Copilot coding agent and code review can also use path-specific instructions and agent instructions.
-- The actual reusable workflow content still lives in `skills/`.
+推奨導線:
+- この repo をそのまま開く
 
-## Design Principle
+補助導線:
+- `scripts/install_skill.sh copilot <skill-name>`
+- `~/.copilot/skills/<skill-name>/` へ canonical skill をコピーする
 
-- Keep the reusable workflow in one canonical place.
-- Add thin wrappers for each tool rather than maintaining separate versions of the same skill.
-- Prefer stable file and folder names so teams can automate installation later.
+## 設計原則
+
+- reusable workflow は `skills/` の 1 箇所に集約する
+- ツールごとの差分は wrapper に閉じ込める
+- wrapper にロジックを複製しない
+- できるだけ stable なファイル名とディレクトリ名を使う
