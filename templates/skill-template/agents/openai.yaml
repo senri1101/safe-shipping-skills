@@ -1,0 +1,7 @@
+interface:
+  display_name: "Your Skill Name"
+  short_description: "[TODO: 25-64 文字程度の短い説明]"
+  default_prompt: "Use $your-skill-name to [TODO: この skill の代表的な使い方を書く]."
+
+policy:
+  allow_implicit_invocation: true
