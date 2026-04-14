@@ -50,7 +50,7 @@ Use $project-readiness-check to assess this repository before release.
 
 推奨:
 - このリポジトリをそのまま開く
-- `CLAUDE.md` と `.claude/commands/project-readiness-check.md` を使う
+- `CLAUDE.md`、`.claude/skills/project-readiness-check/SKILL.md`、`.claude/commands/project-readiness-check.md` を使う
 
 補助方法:
 ```bash
@@ -58,6 +58,7 @@ bash scripts/install_skill.sh claude project-readiness-check
 ```
 
 インストール先:
+- `~/.claude/skills/project-readiness-check/`
 - `~/.claude/commands/project-readiness-check.md`
 
 利用例:
@@ -111,11 +112,14 @@ skills/
     SKILL.md
     agents/openai.yaml
     references/
-.github/skills/
+.claude/skills/
   project-readiness-check/
     SKILL.md
 .claude/commands/
   project-readiness-check.md
+.github/skills/
+  project-readiness-check/
+    SKILL.md
 ```
 
 ## リポジトリ構成
@@ -126,6 +130,7 @@ skills/
 ├── scripts/
 ├── templates/
 ├── docs/
+├── .claude/skills/
 ├── .claude/commands/
 ├── .github/skills/
 ├── .github/instructions/

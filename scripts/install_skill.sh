@@ -26,16 +26,28 @@ install_codex() {
 }
 
 install_claude() {
-  local source="$repo_root/.claude/commands/$skill_name.md"
-  local target_dir="$HOME/.claude/commands"
-  if [ ! -f "$source" ]; then
-    echo "Claude command not found: $source" >&2
+  local skill_source="$repo_root/.claude/skills/$skill_name"
+  local command_source="$repo_root/.claude/commands/$skill_name.md"
+  local skill_target="$HOME/.claude/skills/$skill_name"
+  local command_target_dir="$HOME/.claude/commands"
+
+  if [ ! -d "$skill_source" ]; then
+    echo "Claude skill not found: $skill_source" >&2
     exit 1
   fi
-  mkdir -p "$target_dir"
-  cp "$source" "$target_dir/$skill_name.md"
-  echo "Installed Claude Code command: $target_dir/$skill_name.md"
-  echo "Official-first option: open this repository directly so Claude Code can use project memory and project commands in place."
+
+  if [ ! -f "$command_source" ]; then
+    echo "Claude command not found: $command_source" >&2
+    exit 1
+  fi
+
+  mkdir -p "$HOME/.claude/skills" "$command_target_dir"
+  rm -rf "$skill_target"
+  cp -R "$skill_source" "$skill_target"
+  cp "$command_source" "$command_target_dir/$skill_name.md"
+  echo "Installed Claude Code skill: $skill_target"
+  echo "Installed Claude Code command: $command_target_dir/$skill_name.md"
+  echo "Official-first option: open this repository directly so Claude Code can use project memory, skills, and commands in place."
 }
 
 install_copilot() {

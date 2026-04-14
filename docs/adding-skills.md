@@ -61,6 +61,7 @@ skills/<skill-name>/
 
 ### Claude Code
 - `CLAUDE.md` を project memory として使う
+- `.claude/skills/<skill-name>/SKILL.md` を Claude 用の skill 入口として置く
 - 必要なら `.claude/commands/<skill-name>.md` を追加する
 - wrapper の中では、共通 skill への参照だけを持たせる
 
@@ -79,9 +80,10 @@ skills/<skill-name>/
 3. `SKILL.md` の frontmatter と本文を埋める
 4. `agents/openai.yaml` を skill 内容に合わせて更新する
 5. `references/` を必要最低限の粒度で分割する
-6. 必要なら `.claude/commands/<skill-name>.md` を追加する
-7. 必要なら `.github/skills/<skill-name>/SKILL.md` を追加する
-8. README の「同梱している skill」を更新する
+6. Claude Code 向けに `.claude/skills/<skill-name>/SKILL.md` を追加する
+7. 必要なら `.claude/commands/<skill-name>.md` を追加する
+8. 必要なら `.github/skills/<skill-name>/SKILL.md` を追加する
+9. README の「同梱している skill」を更新する
 
 ## レビュー観点
 

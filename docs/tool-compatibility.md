@@ -23,15 +23,16 @@ $skill-installer install https://github.com/senri1101/safe-shipping-skills/tree/
 
 正式な project-level の入口:
 - `CLAUDE.md`
+- `.claude/skills/<skill-name>/SKILL.md`
 - `.claude/commands/<skill-name>.md`
 
 推奨する導入方法:
 - このリポジトリをそのまま開く
-- Claude Code が `CLAUDE.md` と project command を読む
+- Claude Code が `CLAUDE.md`、`.claude/skills/`、`.claude/commands/` を読む
 
 補助的な導入方法:
 - `scripts/install_skill.sh claude <skill-name>`
-- `~/.claude/commands/<skill-name>.md` にコピーされる
+- `~/.claude/skills/<skill-name>/` と `~/.claude/commands/<skill-name>.md` にコピーされる
 
 例:
 ```text
