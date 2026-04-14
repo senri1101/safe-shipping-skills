@@ -64,8 +64,9 @@ repo や仕様がある場合は、まず以下を探索して事実を埋める
 2. repo や仕様がある場合は先に探索し、憶測ではなく証拠を集める。
 3. `references/hard-gates.md` で常時必須の観点を先に判定する。
 4. `references/stage-gates.md` から現在段階に対応する gate を選び、追加判定する。
-5. 判定が揺れる箇所、Warning / Blocker が出た箇所だけ `references/deep-dive-index.md` の質問で深掘りする。
-6. `references/report-template.md` の形式で、総合判定、根拠、未解決事項、次アクションをまとめる。
+5. まず `references/appendix-index-map.md` で関係しそうな章を選ぶ。
+6. 判定が揺れる箇所、Warning / Blocker が出た箇所だけ `references/deep-dive-index.md` の質問で深掘りする。
+7. `references/report-template.md` の形式で、総合判定、根拠、未解決事項、次アクションをまとめる。
 
 ## 判定ルール
 
@@ -114,5 +115,6 @@ repo や仕様がある場合は、まず以下を探索して事実を埋める
 - プロジェクトプロファイル: `references/project-profile.md`
 - 常時必須 gate: `references/hard-gates.md`
 - 段階別 gate: `references/stage-gates.md`
+- 付録索引の coverage map: `references/appendix-index-map.md`
 - 深掘り質問索引: `references/deep-dive-index.md`
 - 出力テンプレート: `references/report-template.md`
